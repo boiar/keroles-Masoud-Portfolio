@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Keroles Masoud - Senior Backend Engineer specializing in scalable enterprise architectures">
+    <title>Keroles Masoud | Senior Backend Engineer</title>
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==================== CSS Variables ==================== */
+        :root {
+            /* Colors */
+            --primary: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #ec4899;
+            --accent: #8b5cf6;
+
+            /* Text Colors */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+
+            /* Background Colors */
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+
+            /* Effects */
+            --shadow-primary: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Spacing */
+            --section-padding: 120px;
+            --card-radius: 24px;
+        }
+
+        /* ==================== Base Styles ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        /* ==================== Utility Classes ==================== */
+        /* Accessibility */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Layout Stability */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            transition: var(--transition-base);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== Navigation ==================== */
+        .navbar {
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.2rem 0;
+            transition: var(--transition-base);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(15, 23, 42, 0.95) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            margin: 0 0.8rem;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-base);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light) !important;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ==================== Hero Section ==================== */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(60px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .lead {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-img-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .hero-img img {
+            border-radius: 20px;
+            width: 100%;
+            display: block;
+        }
+
+        .hero-img:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        .hero-blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.3;
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        /* ==================== Buttons ==================== */
+        .btn-custom {
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-base);
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ==================== Section Titles ==================== */
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* ==================== Stats Section ==================== */
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: var(--transition-base);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* ==================== Timeline ==================== */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-dark);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 45%;
+            transition: var(--transition-base);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.15);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .company-name {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* ==================== Skills Section ==================== */
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            height: 100%;
+        }
+
+        .skill-category h4 {
+            color: var(--text-light);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--glass-border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: var(--transition-base);
+        }
+
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .skill-tag img {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.6rem;
+            object-fit: contain;
+        }
+
+  /* ==================== Contact Section ==================== */
+        #contact {
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            padding: 1rem;
+            border-radius: 12px;
+            transition: var(--transition-base);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            transition: var(--transition-base);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item:hover i {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.5);
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .contact-item h5 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin: 0 0.5rem;
+            transition: var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid var(--glass-border);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* ==================== Scroll to Top Button ==================== */
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-primary);
+            z-index: 1000;
+        }
+
+        #scrollTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollTop:hover {
+            transform: translateY(-5px);
+            background: var(--primary-dark);
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 991px) {
+            :root {
+                --section-padding: 80px;
+            }
+
+            .hero {
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-img-container {
+                margin-top: 3rem;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-img {
+                max-width: 350px;
+            }
+
+            .btn-custom {
+                margin-right: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content {
+                width: auto;
+                margin-left: 4rem !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .stat-item {
+                margin-bottom: 1rem;
+            }
+
+            .nav-link {
+                margin: 0.5rem 0;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn-custom {
+                width: 100%;
+                margin-right: 0;
+                justify-content: center;
+            }
+
+            .skill-tag {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ==================== Navigation ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"> Km.Dev
+            
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== Hero Section ==================== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <h1>Hi, I'm <br><span class="text-gradient">Keroles Masoud</span></h1>
+                        <p class="lead">Senior Backend Engineer specializing in scalable enterprise architectures.
+                            Transforming complex problems into elegant, robust solutions.</p>
+                        <div class="d-flex flex-wrap">
+                            <a href="#contact" class="btn btn-custom btn-primary-custom">
+                                <i class="fas fa-paper-plane"></i>
+                                Get In Touch
+                            </a>
+                            <a href="#experience" class="btn btn-custom btn-outline-custom">
+                                <i class="fas fa-code"></i>
+                                View Experience
+                            </a>
+                            <a href="https://docs.google.com/document/d/1eRg5vfbgzIav8Hz1pSOaPp_Q6QW2pQqvt6_OxUNd_zU/edit?tab=t.0"
+                                target="_blank" class="btn btn-custom btn-outline-custom">
+                                <i class="fas fa-file-alt"></i>
+                                My CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-img-container fade-in">
+                        <div class="hero-blob"></div>
+                        <div class="hero-img">
+                            <img src="profile.jpg" width="450" height="450"
+                                alt="Keroles Masoud - Senior Backend Engineer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== About Section ==================== -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">About Me</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="glass-card">
+                        <p>With over 4 years of experience in backend development, I specialize in building robust,
+                            scalable systems using PHP (Laravel) and Node.js (NestJS).</p>
+                        <p>
+                            Currently expanding my expertise into Java and Spring Boot to enhance enterprise-level architecture design.
+                        </p>
+                        
+                        <p>I'm passionate about code quality, clean architecture, and continuous learning.</p>
+                        <p>My approach is technology-agnostic, focusing on selecting the right tools for each challenge while
+                            maintaining SOLID principles and design patterns.</p>
+                        <p class="mb-0"><strong>Education:</strong> Bachelor's Degree in Computer Science, Minia
+                            University</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">On-Time Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Experience Section ==================== -->
+    <section id="experience">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Experience</h2>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="company-name">EZZAT MEDICAL EDUCATION (UK)</h3>
+                        <div class="job-title">Senior Backend Engineer</div>
+                        <div class="date">
+                            <i class="far fa-calendar-alt me-2"></i>
+                            Jan 2025 - Present
+                        </div>
+                        <ul class="mt-3">
+                            <li>Architected high-impact features driving product revenue growth</li>
+                            <li>Optimized system architecture for enhanced security and maintainability</li>
+                            <li>Conducted technical code reviews enforcing SOLID principles</li>
+                            <li>Mentored 2 junior developers on architecture and Git workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="company-name">AL-TAREK IT (Oman)</h3>
+                        <div class="job-title">Mid-Level Backend Engineer</div>
+                        <div class="date">
+                            <i class="far fa-calendar-alt me-2"></i>
+                            Jul 2022 - Jan 2025
+                        </div>
+                        <ul class="mt-3">
+                            <li>Mentored multiple junior developers, elevating team performance</li>
+                            <li>Translated complex business requirements into technical specifications</li>
+                            <li>Designed systems based on clean architecture and design patterns</li>
+                            <li>Led legacy monolithic system migration to Laravel 10</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="company-name">Freelance</h3>
+                        <div class="job-title">Backend Engineer</div>
+                        <div class="date">
+                            <i class="far fa-calendar-alt me-2"></i>
+                            Oct 2020 - Jan 2024
+                        </div>
+                        <ul class="mt-3">
+                            <li>Owned full SDLC from requirements to deployment</li>
+                            <li>Architected multi-vendor e-commerce platforms, ERP systems, and tourism portals</li>
+                            <li>Delivered 9+ end-to-end solutions with 100% on-time delivery</li>
+                            <li>Served as technical consultant for diverse clients</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Skills Section ==================== -->
+    <section id="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Technical Skills</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fas fa-server"></i>
+                            Backend Development
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/php/777BB4" width="20"
+                                    height="20" loading="lazy" alt="PHP">PHP</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/laravel/FF2D20" width="20"
+                                    height="20" loading="lazy" alt="Laravel">Laravel</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/codeigniter/EF4223" width="20"
+                                    height="20" loading="lazy" alt="CodeIgniter">CodeIgniter</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/nodedotjs/339933" width="20"
+                                    height="20" loading="lazy" alt="Node.js">Node.js</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/nestjs/E0234E" width="20"
+                                    height="20" loading="lazy" alt="NestJS">NestJS</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/express/000000" width="20"
+                                    height="20" loading="lazy" alt="Express.js">Express.js</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="20"
+                                    height="20" loading="lazy" alt="TypeScript">TypeScript</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/openjdk/FFFFFF" width="20"
+                                    height="20" loading="lazy" alt="Java">Java</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/springboot/6DB33F" width="20"
+                                    height="20" loading="lazy" alt="Spring Boot">Spring Boot</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/graphql/E10098" width="20"
+                                    height="20" loading="lazy" alt="GraphQL">GraphQL</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/socketdotio/010101" width="20"
+                                    height="20" loading="lazy" alt="WebSocket">WebSocket</span>
+                            <span class="skill-tag"><i class="fas fa-exchange-alt me-1"></i>gRPC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fas fa-database"></i>
+                            Database & Caching
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/mysql/4479A1" width="20"
+                                    height="20" loading="lazy" alt="MySQL">MySQL</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/postgresql/4169E1" width="20"
+                                    height="20" loading="lazy" alt="PostgreSQL">PostgreSQL</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/mongodb/47A248" width="20"
+                                    height="20" loading="lazy" alt="MongoDB">MongoDB</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/sqlite/003B57" width="20"
+                                    height="20" loading="lazy" alt="SQLite">SQLite</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/redis/DC382D" width="20"
+                                    height="20" loading="lazy" alt="Redis">Redis</span>
+                            <span class="skill-tag"><i class="fas fa-check-double me-1"></i>ACID Transactions</span>
+                            <span class="skill-tag"><i class="fas fa-list-ol me-1"></i>Indexing</span>
+                            <span class="skill-tag"><i class="fas fa-th-large me-1"></i>Partitioning</span>
+                            <span class="skill-tag"><i class="fas fa-layer-group me-1"></i>Sharding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fas fa-exchange-alt"></i>
+                            Message Queues & Integration
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/apachekafka/231F20" width="20"
+                                    height="20" loading="lazy" alt="Apache Kafka">Apache Kafka</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" width="20"
+                                    height="20" loading="lazy" alt="RabbitMQ">RabbitMQ</span>
+                            <span class="skill-tag"><i class="fas fa-key me-1"></i>OAuth2</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/paypal/00457C" width="20"
+                                    height="20" loading="lazy" alt="PayPal">PayPal</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/stripe/008CDD" width="20"
+                                    height="20" loading="lazy" alt="Stripe">Stripe</span>
+                            <span class="skill-tag"><i class="fas fa-credit-card me-1"></i>Revolut</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fas fa-vial"></i>
+                            Testing & Monitoring
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><i class="fas fa-code me-1"></i>TDD</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/php/777BB4" width="20"
+                                    height="20" loading="lazy" alt="PHPUnit">PHPUnit</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/jest/C21325" width="20"
+                                    height="20" loading="lazy" alt="Jest">Jest</span>
+                            <span class="skill-tag"><i class="fab fa-java me-1"></i>JUnit</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/prometheus/E6522C" width="20"
+                                    height="20" loading="lazy" alt="Prometheus">Prometheus</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/grafana/F46800" width="20"
+                                    height="20" loading="lazy" alt="Grafana">Grafana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fab fa-docker"></i>
+                            DevOps & Infrastructure
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/docker/2496ED" width="20"
+                                    height="20" loading="lazy" alt="Docker">Docker</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/linux/FCC624" width="20"
+                                    height="20" loading="lazy" alt="Linux">Linux</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/apache/D22128" width="20"
+                                    height="20" loading="lazy" alt="Apache">Apache</span>
+                            <span class="skill-tag"><img src="https://cdn.simpleicons.org/digitalocean/0080FF"
+                                    width="20" height="20" loading="lazy" alt="DigitalOcean">DigitalOcean</span>
+                            <span class="skill-tag"><i class="fas fa-balance-scale me-1"></i>Load Balancer</span>
+                            <span class="skill-tag"><i class="fas fa-cog me-1"></i>cPanel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category fade-in">
+                        <h4>
+                            <i class="fas fa-code"></i>
+                            Principles & Patterns
+                        </h4>
+                        <div>
+                            <span class="skill-tag"><i class="fas fa-cube me-1"></i>SOLID</span>
+                            <span class="skill-tag"><i class="fas fa-sitemap me-1"></i>MVC</span>
+                            <span class="skill-tag"><i class="fas fa-project-diagram me-1"></i>HMVC</span>
+                            <span class="skill-tag"><i class="fas fa- me-1"></i>Clean
+                                Architecture</span>
+                            <span class="skill-tag"><i class="fas fa-shapes me-1"></i>Design Patterns</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Contact Section ==================== -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-white">Get In Touch</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="glass-card">
+                        <div class="contact-info">
+                            <div class="contact-item fade-in">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h5 class="mb-0 text-white">Email</h5>
+                                    <a href="mailto:keroles.masoud.issac@gmail.com">keroles.masoud.issac@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item fade-in">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h5 class="mb-0 text-white">Phone</h5>
+                                    <a href="tel:+201234567890">+20 120 796 4740</a>
+                                </div>
+                            </div>
+                            <div class="contact-item fade-in">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h5 class="mb-0 text-white">Location</h5>
+                                    <span class="text-white-50">Cario, Egypt</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links text-center mt-4 pt-4"
+                            style="border-top: 1px solid rgba(255,255,255,0.1);">
+                            <a href="https://www.linkedin.com/in/keroles-masoud" target="_blank"
+                                rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/kerolesmasoud" target="_blank" rel="noopener noreferrer"
+                                class="social-link" aria-label="GitHub Profile">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://medium.com/@kerolesmasoud" target="_blank" rel="noopener noreferrer"
+                                class="social-link" aria-label="Medium Blog">
+                                <i class="fab fa-medium-m"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Footer ==================== -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Keroles Masoud. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== Scroll to Top Button ==================== -->
+    <button id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ==================== Scripts ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ==================== Utilities ====================
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        };
+
+        // ==================== Configuration ==================== 
+        const CONFIG = {
+            scrollOffset: 50,
+            scrollTopThreshold: 300,
+            throttleDelay: 100, // ms
+            observerOptions: {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            }
+        };
+
+        // ==================== Intersection Observer for Fade-in Animation ====================
+        const initFadeInObserver = () => {
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, CONFIG.observerOptions);
+
+            faders.forEach(fader => appearOnScroll.observe(fader));
+        };
+
+        // ==================== Navbar Scroll Effect ====================
+        const initNavbarScroll = () => {
+            const navbar = document.querySelector('.navbar');
+
+            const handleScroll = () => {
+                if (window.scrollY > CONFIG.scrollOffset) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+
+            window.addEventListener('scroll', throttle(handleScroll, CONFIG.throttleDelay));
+        };
+
+        // ==================== Scroll to Top Button ====================
+        const initScrollTopButton = () => {
+            const scrollTopBtn = document.getElementById('scrollTop');
+
+            const toggleVisibility = () => {
+                if (window.scrollY > CONFIG.scrollTopThreshold) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            };
+
+            const scrollToTop = () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            window.addEventListener('scroll', throttle(toggleVisibility, CONFIG.throttleDelay));
+            scrollTopBtn.addEventListener('click', scrollToTop);
+        };
+
+        // ==================== Smooth Scroll for Navigation Links ====================
+        const initSmoothScroll = () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+
+            const scrollToSection = (e) => {
+                e.preventDefault();
+
+                const targetId = e.currentTarget.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active state
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        bootstrap.Collapse.getInstance(navbarCollapse)?.hide();
+                    }
+                }
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', scrollToSection);
+            });
+        };
+
+        // ==================== Active Section Highlight ====================
+        const initActiveSectionHighlight = () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const highlightActiveSection = () => {
+                const scrollY = window.scrollY;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', throttle(highlightActiveSection, CONFIG.throttleDelay));
+        };
+
+        // ==================== Initialize All Features ====================
+        const init = () => {
+            initFadeInObserver();
+            initNavbarScroll();
+            initScrollTopButton();
+            initSmoothScroll();
+            initActiveSectionHighlight();
+        };
+
+        // Run initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+
+</html>
